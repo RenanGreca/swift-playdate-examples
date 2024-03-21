@@ -29,7 +29,7 @@ $(error Swift toolchain not found; set ENV value TOOLCHAINS (e.g. TOOLCHAINS=org
 endif
 
 GCC_INCLUDE_PATHS := $(shell $(CC) -E -Wp,-v -xc /dev/null 2>&1 | egrep '^ ' | xargs echo )
-SWIFT_EXEC := "$(shell TOOLCHAINS=$(TOOLCHAINS) xcrun -f swiftc)"
+SWIFT_EXEC = /$(RELATIVE_TOOLCHAIN_PATH)/usr/bin/swiftc
 TOOLCHAIN_PATH := $(shell echo $(SWIFT_EXEC)|sed s'/.xctoolchain.*/.xctoolchain/')
 
 $(info Using Swift toolchain "$(TOOLCHAINS)" (from $(TOOLCHAIN_PATH)))
